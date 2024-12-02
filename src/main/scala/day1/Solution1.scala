@@ -8,10 +8,10 @@ object Solution1 extends App {
   val lines = Source.fromFile(filePath).getLines().toList
 
   val (col1, col2) = lines
-    .map(_.trim.split("\\s+")) // Split each line on whitespace
-    .filter(_.length == 2) // Ensure the line has exactly two columns
-    .map { case Array(a, b) => (a.toInt, b.toInt) } // Convert to integers
-    .unzip // Separate into two collections
+    .map(_.trim.split("\\s+"))
+    .filter(_.length == 2)
+    .map { case Array(a, b) => (a.toInt, b.toInt) }
+    .unzip
 
   val sortedCol1 = col1.sorted
   val sortedCol2 = col2.sorted
