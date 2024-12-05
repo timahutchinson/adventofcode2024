@@ -17,7 +17,7 @@ object Solution2 extends App {
       .sortBy(_.start)
 
     var enabled = true
-    val results = allMatches.foldLeft(List.empty[(Int, Int)]) { (acc, m) =>
+    val enabledMulOps = allMatches.foldLeft(List.empty[(Int, Int)]) { (acc, m) =>
       m.matched match {
         case doPattern() =>
           enabled = true
@@ -32,7 +32,7 @@ object Solution2 extends App {
       }
     }
 
-    results
+    enabledMulOps
   }
 
   private def solution() = {
