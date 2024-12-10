@@ -15,7 +15,7 @@ object Solution2 extends App {
       doPattern.findAllMatchIn(str).toList ++
       dontPattern.findAllMatchIn(str).toList)
       .sortBy(_.start)
-
+    
     var enabled = true
     val enabledMulOps = allMatches.foldLeft(List.empty[(Int, Int)]) { (acc, m) =>
       m.matched match {
@@ -42,9 +42,11 @@ object Solution2 extends App {
       source.getLines().toList
     }
 
-    val input = List("xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))")
+    val flatLines = List(lines.mkString(", \n"))
 
-    val results = lines
+    //val input = List("xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))")
+
+    val results = flatLines
       .flatMap { str => findEnabledMulOps(str) }
       .map { case (a, b) => a * b }
       .sum
