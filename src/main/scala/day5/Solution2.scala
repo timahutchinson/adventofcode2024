@@ -13,7 +13,7 @@ object Solution2 extends App {
     }
   }
 
-  def topologicalSort(update: List[Int]): List[Int] = {
+  def topoSort(update: List[Int]): List[Int] = {
     val inUpdate = update.toSet
     val subGraph = graph.view.filterKeys(inUpdate).mapValues(_.filter(inUpdate)).toMap
 
@@ -58,7 +58,7 @@ object Solution2 extends App {
   }
 
   // Filter to bad updates, fix them, find the middle value, and sum
-  val reorderedUpdates = updates.filterNot(isCorrectlyOrdered).map(topologicalSort)
+  val reorderedUpdates = updates.filterNot(isCorrectlyOrdered).map(topoSort
   val sumOfMiddlePages = reorderedUpdates.map(update => update(update.length / 2)).sum
 
   println(sumOfMiddlePages)
